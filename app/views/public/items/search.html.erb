@@ -1,0 +1,30 @@
+<h4>検索結果 "<%= @section_title %>"</h4>
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="row justify-content-center">
+      <% @items.each do |item| %>
+     <div class="one-post">
+  <span>
+  <%= link_to public_item_path(item.id) do %>
+  <% if item.image.attached? %>
+    <%= image_tag item.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+  <% end %>
+  </span>
+
+  <p class="caption">商品名</p>
+  <span><%= item.name %></span>
+  <p class="caption">商品説明</p>
+  <span><%= item.introduction %></span>
+  <p class="caption">税抜き価格</p>
+  <span><%= item.price %></span>
+  <p class="caption">店舗</p>
+  <span><%= item.member.name %></span>
+  <% end %>
+  </div>
+    </div>
+  </div>
+</div>

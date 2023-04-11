@@ -1,0 +1,43 @@
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="one-post">
+  　　　　<span>
+          <% if @item.image.attached? %>
+           <%= image_tag @item.image, size: "200x200" %>
+          <% else %>
+           <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+        </span>
+        <p class="caption">商品名</p>
+        <span><%= @item.name %></span>
+
+        <p class="caption">商品説明</p>
+        <span><%= @item.introduction %></span>
+
+        <p class="caption">価格</p>
+        <span><%= @item.price %></span>
+        
+        <p class="caption">店舗</p>
+          <span><%= @item.member.name %></span>
+        
+        <p>
+          <%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
+          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+        
+          <%= f.hidden_field :item_id, :value => @item.id %>
+        </p>
+          
+        <div class="row justify-content-start mb-3">
+          <div class="col-4 text-center">
+            <p><%= f.submit "カートに入れる", class: 'btn btn-primary' %></p>
+            <p><%=link_to new_public_item_reservation_path(@item) do %>
+            <button class="btn btn-success" >予約</button>
+            <%end%></p>
+          </div>
+        </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<h2>配送先登録</h2>
+<div class="cover-index">
+  <div class="container">
+    <div class="one-post">
+    　<div class="row justify-content-start mb-3">
+        <div class="col-4 text-center">
+            <h4>配送先を入力してください</h4>
+            <%= form_with model: @address, url: public_addresses_path, method: :post do |f| %>
+              
+              <div class="field">
+                  <%= f.label :postal_code %><br />
+                  <%= f.text_field :postal_code, autofocus: true, autocomplete: "郵便番号" %>
+              </div>
+              
+              <div class="field">
+                  <%= f.label :address %><br />
+                  <%= f.text_area :address, autofocus: true, autocomplete: "住所" %>
+              </div>
+                
+              <div class="field">
+                  <%= f.label :name %><br />
+                  <%= f.text_field :name, autofocus: true, autocomplete: "氏名" %>
+              </div>
+              
+              <%= f.submit "登録" %>
+              <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>配送先一覧</h2>
+<table class="table">
+
+  <thead>
+    <th>郵便番号</th>
+    <th>住所</th>
+    <th>氏名</th>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+        <tr>
+          <td><%= address.postal_code %></td>
+          <td><%= address.address %></td>
+          <td><%= address.name %></td>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

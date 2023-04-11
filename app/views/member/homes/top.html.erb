@@ -1,0 +1,40 @@
+<h2>注文・予約履歴一覧</h2>
+<table class="table">
+
+  <thead>
+    <th>購入日時</th>
+    <th>購入者</th>
+    <th>注文個数</th>
+  </thead>
+
+  <tbody>
+  <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.created_at, member_order_path(order) %></td>
+        <td><%= order.customer.last_name + order.customer.first_name %></td>
+        <% order.order_details.each do |order_detail| %>
+        <% @total += order_detail.amount %>
+        <% end %>
+        <td><%= @total %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<table class="table">
+
+  <thead>
+    <th>予約日時</th>
+    <th>予約者</th>
+  </thead>
+
+  <tbody>
+  <% @reservations.each do |reservation| %>
+
+      <tr>
+        <td><%= link_to reservation.created_at, member_reservation_path(reservation) %></td>
+        <td><%= reservation.customer.last_name + reservation.customer.first_name %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

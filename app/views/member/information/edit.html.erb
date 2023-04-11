@@ -1,0 +1,44 @@
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1 class="font-weight-normal mt-3">会員情報編集画面</h1>
+    </div>
+    <div class="row justify-content-center">
+      <div class="one-post">
+        <%= form_with model: @member, url: member_information_path(@member.id) do |f| %>
+
+         <div class="field">
+          <%= f.label :name %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+         </div>
+         <div class="field">
+          <%= f.label :name_kana %><br />
+          <%= f.text_field :name_kana, autofocus: true, autocomplete: "name_kana" %>
+         </div>
+         <div class="field">
+          <%= f.label :postal_code %><br />
+          <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+         </div>
+         <div class="field">
+          <%= f.label :address %><br />
+          <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+         </div>
+         <div class="field">
+          <%= f.label :telephone_number %><br />
+          <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+         </div>
+         <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+         </div>
+         <div class="actions">
+          <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+          <%=link_to member_information_check_path do %>
+           <button class="btn btn-warning" >退会する</button>
+          <%end%>
+         </div>
+        <% end %>
+       </div>
+    </div>
+  </div>
+</div>

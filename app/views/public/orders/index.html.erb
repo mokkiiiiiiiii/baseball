@@ -1,0 +1,25 @@
+<h2>注文履歴一覧ページ</h2>
+<table class="table">
+
+  <thead>
+    <th>ご注文日</th>
+    <th>ご配送先</th>
+    <th>お支払金額</th>
+    <th>詳細ページへ</th>
+  </thead>
+
+  <tbody>
+  <% @orders.each do |order| %>
+
+      <tr>
+        <td><%= order.created_at %></td>
+        <td>
+        <%= order.postal_code %>
+        <%= order.address %>
+        <%= order.name %></td>
+        <td><%= order.total_payment + 800 %></td>
+        <td><%= link_to "詳細画面", public_order_path(order.id) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

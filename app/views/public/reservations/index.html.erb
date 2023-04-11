@@ -1,0 +1,21 @@
+<h2>予約履歴ページ</h2>
+<table class="table">
+
+  <thead>
+    <th>予約日</th>
+    <th>予約先</th>
+    <th>予約商品</th>
+  </thead>
+
+  <tbody>
+  <% @reservations.each do |reservation| %>
+
+      <tr>
+        <td><%= reservation.created_at %></td>
+        <td> <%= reservation.name %></td>
+        <td><%= reservation.item.name %></td>
+        <td><%= link_to "詳細画面", public_reservation_path(reservation.id) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,29 @@
+<form action = /public/items/search method="get">
+  <input type="search" name="search" placeholder="検索キーワードを入力してください">
+  <input type="submit" name="submit" value="検索">
+</form>
+
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1 class="font-weight-normal mt-3">商品一覧</h1>
+    </div>
+    <div class="row justify-content-center">
+      <% @items.each do |item| %>
+     <div class="one-post">
+      <span>
+      <%= link_to public_item_path(item.id) do %>
+      <% if item.image.attached? %>
+        <%= image_tag item.image, size: "200x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "200x200" %>
+      <% end %>
+      <% end %>
+      </span>
+      <p class="caption">商品名</p>
+      <span><%= item.name %></span>
+     </div>
+      <% end %>
+    </div>
+  </div>
+</div>

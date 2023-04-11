@@ -1,0 +1,32 @@
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="one-post">
+  　　　　<span>
+          <% if @item.image.attached? %>
+           <%= image_tag @item.image, size: "200x200" %>
+          <% else %>
+           <%= image_tag 'no_image', size: "200x200" %>
+          <% end %>
+        </span>
+        <p class="caption">商品名</p>
+        <span><%= @item.name %></span>
+
+        <p class="caption">商品説明</p>
+        <span><%= @item.introduction %></span>
+
+        <p class="caption">価格</p>
+        <span><%= @item.price %></span>
+        
+        <p class="caption">
+        <%=link_to member_items_path do %>
+        <button class="btn btn-primary btn-sm" >商品一覧画面</button>
+        <%end%>
+        <%=link_to edit_member_item_path do %>
+        <button class="btn btn-secondary btn-sm" >商品編集画面</button>
+        <%end%>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

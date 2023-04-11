@@ -1,0 +1,77 @@
+<h2>顧客詳細ページ</h2>
+<div class="cover-index">
+  <div class="container">
+    
+      <%= form_with model: @customer, url: public_customer_path(@customer.id) do |f| %>
+    　<div class="one-post">
+        <div class="row justify-content-start mb-3">
+          <div class="col-3">
+            氏名
+          </div>
+          <div class="col-3">
+            <span><%= @customer.last_name %><%= @customer.first_name %></span>
+          </div>
+        </div>
+        <div class="row justify-content-start mb-3">
+         <div class="col-3">
+            フリガナ
+          </div>
+          <div class="col-3">
+            <span><%= @customer.last_name_kana %><%= @customer.first_name_kana %></span>
+          </div>
+        </div>
+        <div class="row justify-content-start mb-3">
+          <div class="col-3">
+            郵便番号
+          </div>
+         <div class="col-3">
+            <span><%= @customer.postal_code %></span>
+          </div>
+        </div>
+        <div class="row justify-content-start mb-3">
+          <div class="col-3">
+            住所
+          </div>
+          <div class="col-4">
+            <span><%= @customer.address %></span>
+          </div>
+        </div>
+        <div class="row justify-content-start mb-3">
+          <div class="col-3">
+            電話番号
+          </div>
+          <div class="col-3">
+            <span><%= @customer.telephone_number %></span>
+          </div>
+        </div>
+        <div class="row justify-content-start mb-3">
+          <div class="col-3">
+            メールアドレス
+          </div>
+         <div class="col-3">
+            <span><%= @customer.email %></span>
+          </div>
+        </div>
+        <div class="row justify-content-start mb-3">
+          <div class="col-3">
+            ステータス
+          </div>
+          <div class="col-3">
+            <span><% if @customer.is_deleted %>
+          <span>退会</span>
+          <% else %>
+          <span>有効</span>
+          <% end %></span>
+          </div>
+        </div>
+        <% end %>
+       <div class="row justify-content-start mb-3">
+        <div class="col-4 text-center">
+         <%= link_to "編集する", edit_admin_customer_path, class: "btn btn-secondary mr-1" %>
+         <%= link_to "トップページ", admin_root_path, class: "btn btn-primary" %>
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
+   

@@ -1,0 +1,74 @@
+<h2>マイページ</h2>
+<div class="cover-index">
+  <div class="container">
+    　<div class="one-post">
+          <div class="row justify-content-start mb-3">
+            <div class="col-3">
+              名前(店舗名）
+            </div>
+            <div class="col-3">
+              <span><%= @member.name %></span>
+            </div>
+          </div>
+          <div class="row justify-content-start mb-3">
+           <div class="col-3">
+              ふりがな
+            </div>
+            <div class="col-3">
+              <span><%= @member.name_kana %></span>
+            </div>
+          </div>
+          <div class="row justify-content-start mb-3">
+            <div class="col-3">
+              郵便番号
+            </div>
+           <div class="col-3">
+              <span><%= @member.postal_code %></span>
+            </div>
+          </div>
+          <div class="row justify-content-start mb-3">
+            <div class="col-3">
+              住所
+            </div>
+            <div class="col-4">
+              <span><%= @member.address %></span>
+            </div>
+          </div>
+          <div class="row justify-content-start mb-3">
+            <div class="col-3">
+              電話番号
+            </div>
+            <div class="col-3">
+              <span><%= @member.telephone_number %></span>
+            </div>
+          </div>
+          <div class="row justify-content-start mb-3">
+            <div class="col-3">
+              メールアドレス
+            </div>
+           <div class="col-3">
+              <span><%= @member.email %></span>
+            </div>
+          </div>
+          <div class="row justify-content-start mb-3">
+            <div class="col-3">
+              ステータス
+            </div>
+            <div class="col-3">
+              <span><% if @member.is_deleted %>
+              <span>退会</span>
+              <% else %>
+              <span>有効</span>
+              <% end %></span>
+            </div>
+          </div>
+       
+           <div class="row justify-content-start mb-3">
+            <div class="col-4 text-center">
+             <%= link_to "編集する", edit_member_information_path, class: "btn btn-secondary mr-1" %>
+             <%= link_to "トップページ", member_root_path, class: "btn btn-primary" %>
+            </div>
+           </div>
+      </div>
+    </div>
+  </div>

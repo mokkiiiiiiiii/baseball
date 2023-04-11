@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Baseball</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +9,134 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+    <header>
+      <nav class="header navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+           <a class="navbar-brand" href="/"><span>ベースボールgoods</span></a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+           </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+             <% if customer_signed_in? %>
+
+             <li class="nav-item">
+             <%= link_to public_customers_show_path, class:'nav-link text-light' do %>
+             <i class="fas fa-home"></i> マイページ
+             <% end %>
+             <li class="nav-item">
+             <%= link_to public_items_path, class:'nav-link text-light' do %>
+             <i class="fa fa-gift"></i>  商品一覧
+             <% end %>
+             <li>
+             <%= link_to public_cart_items_path, class:'nav-link text-light' do %>
+             <i class="fa fa-cart-arrow-down"></i> カート画面
+             <% end %>
+             </li>
+             <li>
+             <%= link_to destroy_customer_session_path, method: :delete, class:'nav-link text-light' do %>
+             <i class="fa fa-reply"></i>  ログアウト
+             <% end %>
+             </li>
+             
+             <% elsif admin_signed_in? %>
+
+             <li class="nav-item">
+             <%= link_to admin_customers_path, class:'nav-link text-light' do %>
+             <i class="fa fa-user"></i>  顧客情報一覧
+             <% end %>
+             </li>
+             <li class="nav-item">
+             <%= link_to admin_members_path, class:'nav-link text-light' do %>
+             <i class="fas fa-home"></i> 会員情報一覧
+             <% end %>
+             </li>
+             <li class="nav-item">
+             <%= link_to destroy_admin_session_path, method: :delete, class:'nav-link text-light' do %>
+             <i class="fa fa-reply"></i>  ログアウト
+             <% end %>
+             </li>
+             
+             <% elsif member_signed_in? %>
+             
+             <li class="nav-item">
+             <%= link_to member_root_path, class:'nav-link text-light' do %>
+             <i class="fa fa-check-circle "></i>  注文・予約履歴一覧画面
+             <% end %>
+             </li>
+             <li class="nav-item">
+             <%= link_to member_information_path(current_member), class:'nav-link text-light' do %>
+             <i class="fas fa-home"></i> マイページ
+             <% end %>
+             </li>
+             <li class="nav-item">
+             <%= link_to member_items_path, class:'nav-link text-light' do %>
+             <i class="fa fa-gift"></i> 投稿商品一覧
+             <% end %>
+             </li>
+             <li>
+             <%= link_to new_member_item_path, class:'nav-link text-light' do %>
+             <i class="fa fa-plus"></i>  商品新規登録
+             <% end %>
+             </li>
+             <li class="nav-item">
+             <%= link_to destroy_member_session_path, method: :delete, class:'nav-link text-light' do %>
+             <i class="fa fa-reply"></i> ログアウト
+             <% end %>
+             </li>
+             
+             <% else %>
+             
+             <li>
+             <%= link_to public_about_path, class:"nav-link text-light" do %>
+             <i class="fas fa-link"></i> 概要
+             <% end %>
+             </li>
+             <li>
+             <%= link_to new_customer_registration_path, class:"nav-link text-light" do %>
+             <i class="fas fa-user-plus"></i> お客様新規登録画面
+             <% end %>
+             </li>
+             <li>
+             <%= link_to new_customer_session_path, class:"nav-link text-light" do %>
+             <i class="fa fa-user "></i>  お客様ログイン画面
+             <% end %>
+             <li>
+             <%= link_to new_member_registration_path, class:"nav-link text-light" do %>
+             <i class="fa fa-home"></i> 会員様新規登録画面
+             <% end %>
+             </li>
+             <li>
+             <%= link_to new_member_session_path, class:"nav-link text-light" do %>
+             <i class="fa fa-home"></i>   会員様ログイン画面
+             <% end %>
+             </li>
+             <% end %>
+             </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+   <main class="main mb-auto">
     <%= yield %>
+   </main>
+   <footer class="footer bg-dark text-white py-2 fixed-bottom">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-8">
+            <ul class="p-0 list-unstyled">
+              <li>
+                <a href="" title="About" class="text-white-50">会社概要</a>
+              </li>
+              <li>
+                <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
+              </li>
+              <small class="copyright">&copy; 2023 Example Inc. All Rights Reserved.</small>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

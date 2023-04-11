@@ -1,0 +1,30 @@
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1 class="font-weight-normal mt-3">商品編集画面</h1>
+    </div>
+    <div class="row justify-content-center">
+
+     <%= form_with model: @item, url: member_item_path do |f| %>
+     <div class="one-post">
+  
+      <p class="caption">商品画像</p>
+      <%= f.file_field :image, accept: "image/*" %>
+
+      <p class="caption">商品名</p>
+      <%= f.text_area :name %>
+
+      <p class="caption">商品説明</p>
+      <%= f.text_area :introduction %>
+
+      <p class="caption">税抜き価格</p>
+      <%= f.text_field :price %>
+
+      <p class="caption">
+      <%= f.submit "保存する", class: 'btn btn-success' %>
+      </p>
+     </div>
+     <% end %>
+    </div>
+  </div>
+</div>

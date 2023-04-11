@@ -1,0 +1,52 @@
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1 class="font-weight-normal mt-3">注文情報入力画面</h1>
+    </div>
+      <div class="row justify-content-center">
+        <div class="one-post">
+            <%= form_with model: @order ,url: public_orders_check_path, method: :post do |f| %>
+            
+            <p>支払方法</p>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+            <%= f.label :クレジットカード, Order.payment_methods_i18n[:credit_card] %>
+            
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :銀行振込, Order.payment_methods_i18n[:transfer]%>
+            
+            <p>お届け先住所</p>
+            <div>
+            <%= f.radio_button "select_address", 1 %>
+            <%= current_customer.postal_code %>
+            <%= current_customer.address %>
+            <%= current_customer.last_name %><%= current_customer.first_name %>
+            </div>
+            <div>
+            <%= f.radio_button "select_address", 2 %>
+            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+            </div>
+            <div>
+            <%= f.radio_button "select_address", 3 %>
+            </div>
+            <h2>宛先を入力してください</h2>
+            <div class="field">
+                郵便番号<br />
+                <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+              </div>
+            
+              <div class="field">
+                住所<br />
+                <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+              </div>
+            
+              <div class="field">
+                氏名<br />
+                <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+              </div>
+            
+            <%= f.submit "注文情報確認画面", class: 'btn btn-primary' %>
+            <% end %>
+        </div>
+      </div>
+  </div>
+</div>

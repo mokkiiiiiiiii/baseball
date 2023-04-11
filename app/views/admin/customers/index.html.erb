@@ -1,0 +1,24 @@
+<h2>顧客情報一覧ページ</h2>
+  <table class="table">
+    <thead>
+     <tr>
+      <th>氏名</th>
+      <th>登録アドレス</th>
+      <th>登録状況</th>
+     </tr>
+    </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= link_to customer.full_name,admin_customer_path(customer.id) %></td>
+        <td><%= customer.email %></td>
+        <td><% if customer.is_deleted %>
+            <span>退会</span>
+            <% else %>
+            <span>有効</span>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

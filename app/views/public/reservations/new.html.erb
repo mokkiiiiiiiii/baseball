@@ -1,0 +1,32 @@
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1 class="font-weight-normal mt-3">予約情報入力画面</h1>
+    </div>
+      <div class="row justify-content-center">
+        <div class="one-post">
+          <%= form_with model: @reservation, url: check_public_item_reservations_path(item_id: @item.id), method: :post do |f| %>
+
+            <p>どこの店舗で予約しますか？</p>
+            <div class="field">
+                <%= f.label :name %><br />
+                <%= f.text_area :name, autofocus: true, autocomplete: "名前(店舗名)" %>
+            </div>
+            
+            <div class="field">
+                <%= f.label :postal_code %><br />
+                <%= f.text_field :postal_code, autofocus: true, autocomplete: "郵便番号" %>
+            </div>
+            
+            <div class="field">
+                <%= f.label :address %><br />
+                <%= f.text_area :address, autofocus: true, autocomplete: "住所" %>
+            </div>
+
+
+            <%= f.submit "予約情報確認画面", class: 'btn btn-success'%>
+            <!--<% end %>-->
+        </div>
+      </div>
+  </div>
+</div>

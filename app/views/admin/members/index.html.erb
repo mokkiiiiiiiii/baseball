@@ -1,0 +1,24 @@
+<h2>会員(店舗)情報一覧ページ</h2>
+  <table class="table">
+     <thead>
+      <tr>
+      <th>氏名(店舗名)</th>
+      <th>登録アドレス</th>
+      <th>登録状況</th>
+      </tr>
+     </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= link_to member.name, admin_member_path(member.id) %></td>
+        <td><%= member.email %></td>
+        <td><% if member.is_deleted %>
+            <span>退会</span>
+            <% else %>
+            <span>有効</span>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

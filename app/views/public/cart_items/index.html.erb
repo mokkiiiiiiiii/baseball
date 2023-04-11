@@ -1,0 +1,42 @@
+<h2>カート内商品一覧</h2>
+
+<table class="table">
+    <thead>
+      <td>商品名</td>
+      <td>価格(税込価格)</td>
+      <td>数量</td>
+      <td>小計</td>
+    </thead>
+  
+    <tbody>
+        <% @cart_items.each do |cart_item| %>
+        <% @total += cart_item.subtotal %>
+            <tr>
+              <td><%= cart_item.item.name %></td>
+              <td><%= cart_item.item.with_tax_price %></td>
+              <td>
+                <%= form_with model: cart_item, url: public_cart_item_path(cart_item), local: true do |f| %>
+          　　　　<%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+          　　　　<%= f.submit "変更" %>
+          　　　　<% end %>
+        　　　　</td>
+                <td><%= cart_item.subtotal %></td>
+                <td><%= link_to "削除する", public_cart_item_path(cart_item),method: :DELETE %></td>
+              </tr>
+        <% end %>
+    </tbody>
+  </table>
+    <h4 style="text-align: right">
+      合計金額
+      <%= @total %>
+    </h4>
+
+    <%=link_to new_public_order_path do %>
+      <button class="btn btn-primary btn-sm" >次へ進む(注文情報入力画面)</button>
+    <%end%>
+    <%=link_to public_items_path do %>
+      <button class="btn btn-success btn-sm" >買い物を続ける</button>
+    <%end%>
+    <%=link_to public_cart_items_destroy_all_path, method: :delete do %>
+      <button class="btn btn-danger btn-sm" >カートを空にする</button>
+    <%end%>

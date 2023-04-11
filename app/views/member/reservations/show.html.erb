@@ -1,0 +1,18 @@
+<h2>予約履歴詳細</h2>
+
+<p>予約者</p><%= @reservation.customer.last_name + @reservation.customer.first_name %>
+<p>予約日</p><%= @reservation.created_at %>
+<p>予約先店舗</p><%= @reservation.postal_code + @reservation.address + @reservation.name %>
+
+<table class="table">
+  <thead>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @reservation.item.name %></td>
+        <td><%= @reservation.item.with_tax_price %></td>
+      </tr>
+  </tbody>
+</table>
