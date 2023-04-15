@@ -1,7 +1,7 @@
 class Public::AddressesController < ApplicationController
 
   def index
-    @addresses = Address.all
+    @addresses = Address.where(customer: current_customer)
     @address = Address.new
   end
 
