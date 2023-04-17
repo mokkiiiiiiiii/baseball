@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  root to: 'public/homes#top'
+ 
   # 顧客用
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
   namespace :public do
-   root to: 'homes#top'
+   # root to: 'homes#top'
    get "home/about" => "homes#about", as: "about"
    delete "/cart_items/destroy_all"
    get "/customers/check"
