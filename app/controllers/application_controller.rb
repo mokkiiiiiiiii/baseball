@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
         if resource.is_a?(Admin)
            new_admin_session_path
         else
-           public_root_path
+           root_path
         end
     end
 end

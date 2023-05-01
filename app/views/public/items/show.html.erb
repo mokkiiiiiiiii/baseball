@@ -19,7 +19,7 @@
         <span><%= @item.price %></span>
         
         <p class="caption">店舗</p>
-          <span><%= @item.member.name %></span>
+        <span><%= @item.member.name %></span>
         
         <p>
           <%= form_with model: @cart_item, url: public_cart_items_path do |f| %>

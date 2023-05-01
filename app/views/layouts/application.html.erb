@@ -43,6 +43,10 @@
              <% elsif admin_signed_in? %>
 
              <li class="nav-item">
+             <%= link_to admin_root_path, class:'nav-link text-light' do %>
+             <i class="fa fa-gift"></i>  商品一覧
+             <% end %>
+             <li class="nav-item">
              <%= link_to admin_customers_path, class:'nav-link text-light' do %>
              <i class="fa fa-user"></i>  顧客情報一覧
              <% end %>

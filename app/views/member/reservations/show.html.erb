@@ -1,18 +1,40 @@
 <h2>予約履歴詳細</h2>
 
-<p>予約者</p><%= @reservation.customer.last_name + @reservation.customer.first_name %>
-<p>予約日</p><%= @reservation.created_at %>
-<p>予約先店舗</p><%= @reservation.postal_code + @reservation.address + @reservation.name %>
+<h4>予約情報</h4>
+<table class="table">
+  <thead>
+    <th>予約者</th>
+    <th>予約日</th>
+    <th>予約先</th>
+  </thead>
+  <tbody>
+      <tr>
+        <td><%= @reservation.customer.last_name + @reservation.customer.first_name %></td>
+        <td><%= @reservation.created_at %></td>
+        <td>
+          　<%= @reservation.postal_code %>
+        　　<%= @reservation.address %>
+            <%= @reservation.name %>
+        </td>
+  </tbody>
+</table>
 
 <table class="table">
   <thead>
     <th>商品名</th>
     <th>単価(税込)</th>
+    <th>ステータス</th>
   </thead>
   <tbody>
       <tr>
         <td><%= @reservation.item.name %></td>
         <td><%= @reservation.item.with_tax_price %></td>
+        <td>
+            <%= form_with model: @reservation, url: member_reservation_path, method: :patch, local: true do |f| %>
+            <%= f.select :status, Reservation.statuses.keys, class: "status" %>
+            <%= f.submit "更新" , class: "btn btn-outline-success" %>
+            <% end %>
+        </td>
       </tr>
   </tbody>
 </table>

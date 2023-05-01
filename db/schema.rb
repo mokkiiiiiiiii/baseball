@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_06_113729) do
+ActiveRecord::Schema.define(version: 2023_04_27_111840) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 2023_04_06_113729) do
     t.text "introduction"
     t.integer "price"
     t.boolean "is_active", default: true
+    t.integer "status"
     t.index ["customer_id"], name: "index_reservations_on_customer_id"
     t.index ["item_id"], name: "index_reservations_on_item_id"
   end

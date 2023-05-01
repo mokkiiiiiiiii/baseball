@@ -3,17 +3,33 @@
 <h4>ご予約情報</h4>
 <table class="table">
   <thead>
+    <th>予約者</th>
     <th>予約日</th>
     <th>予約先</th>
-    <th>予約商品</th>
   </thead>
   <tbody>
       <tr>
+        <td><%= @reservation.customer.last_name + @reservation.customer.first_name %></td>
         <td><%= @reservation.created_at %></td>
-        <td><%= @reservation.postal_code %>
-            <%= @reservation.address %>
-            <%= @reservation.name %></td>
+        <td>
+          　<%= @reservation.postal_code %>
+        　　<%= @reservation.address %>
+            <%= @reservation.name %>
+        </td>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>ステータス</th>
+  </thead>
+  <tbody>
+      <tr>
         <td><%= @reservation.item.name %></td>
+        <td><%= @reservation.item.with_tax_price %></td>
+        <td><%= @reservation.status %></td>
       </tr>
   </tbody>
 </table>

@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
   }
   namespace :public do
-   # root to: 'homes#top'
    get "home/about" => "homes#about", as: "about"
    delete "/cart_items/destroy_all"
    get "/customers/check"
@@ -45,8 +44,8 @@ Rails.application.routes.draw do
    
    resources :items, only: [:index,:show,:new,:create,:edit,:update]
    resources :information, only: [:show,:edit,:update]
-   resources :orders, only: [:show]
-   resources :reservations, only: [:show]
+   resources :orders, only: [:show,:update]
+   resources :reservations, only: [:show,:update]
   end
   
   # 管理者用

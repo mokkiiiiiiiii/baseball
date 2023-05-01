@@ -6,6 +6,13 @@ class Member::OrdersController < ApplicationController
     @total = 0
  end
  
+ def update
+    @order = Order.find(params[:id])
+    @order.update(status: params[:order][:status])
+     @order.save
+    redirect_to member_order_path(@order.id)
+ end
+ 
  private
  
  def order_params
