@@ -22,6 +22,7 @@ class Public::ReservationsController < ApplicationController
     @reservation = current_customer.reservations.build(reservation_params)
     @reservation.item_id = Item.find(params[:item_id]).id
     @reservation.customer_id = current_customer.id
+    @reservation.status = 0
     if params[:back_to_new].present?
       render :new
     elsif @reservation.save
@@ -40,6 +41,7 @@ class Public::ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
+    pp @reservation
   end
 
   private
